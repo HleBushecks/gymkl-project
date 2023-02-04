@@ -1,0 +1,6 @@
+git branch -M main
+
+# commit
+
+git remote add origin https://github.com/HleBushecks/gymkl-project.git  
+git push -u origin main 

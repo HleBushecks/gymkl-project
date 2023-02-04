@@ -1,0 +1,115 @@
+body {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-image: url('./img/needles.png');
+
+    /*background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;*/
+}
+
+.yellow-line {
+    display: block;
+    height: 15px;
+    background-color: yellow;
+}
+
+.big-width {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(4, 51, 4);
+}
+
+.small-width {
+    display: none;
+}
+
+#burger-toggle {
+    display: none;
+}
+
+#burger-toggle:checked+.small-width-menu {
+    margin: 0;
+}
+
+.burger-btn {
+    background-color: rgb(4, 51, 4);
+    display: flex;
+    justify-content: center;
+    color: yellow;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: x-large;
+
+}
+
+.small-width-menu {
+    transition: 1s;
+    transition-delay: 0ms;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100%;
+}
+
+.small-width-menu .nav-menu {
+    text-align: center;
+    border-bottom: 1px solid white;
+    width: 100%;
+    font-size: x-large;
+}
+
+
+.nav-menu {
+    padding: 5px 5px 5px 5px;
+    color: yellow;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: x-large;
+    transition: .5s;
+}
+
+.nav-menu:hover {
+    color: rgb(255, 255, 156);
+    transform: scale(1.3);
+}
+
+
+.logo {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+.text-container {
+    width: auto;
+    height: auto;
+    margin-inline: auto;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-90%, -50%);
+}
+
+.main-text span:first-child {
+    position: absolute;
+    top: -100%;
+    left: -50%;
+}
+
+
+.main-text span:last-child {
+    position: absolute;
+    top: 100%;
+}
+
+
+.main-text span {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 50px;
+    color: yellow;
+}

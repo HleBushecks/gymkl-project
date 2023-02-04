@@ -1,0 +1,38 @@
+@media (max-width:800px) {
+    .main-text span {
+        top: 0;
+        left: 0;
+    }
+
+    .main-text span:first-child {
+        top: -100%;
+        left: 0;
+    }
+
+    .text-container {
+        transform: translate(-60%, 120%);
+        top: 30%;
+        margin: 0 auto;
+    }
+
+    .nav-menu{
+        padding: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+
+}
+
+@media (max-width:500px) {
+    .big-width {
+        display: none;
+    }
+
+    .small-width {
+        display: block;
+    }
+
+    
+}
+

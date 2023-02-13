@@ -1,7 +1,7 @@
 body {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url('./img/needles.png');
+    background-image: url('../img/needles.png');
 
     /*background-repeat: no-repeat;
     background-position: center center;
@@ -16,9 +16,14 @@ body {
     position: relative;
 }
 
+.logo-menu {
+    height: 35px;
+}
+
 .big-width {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     background-color: rgb(4, 51, 4);
     z-index: 1;
     position: relative;
@@ -119,4 +124,62 @@ body {
     font-family: 'Archivo Black', sans-serif;
     font-size: 50px;
     color: yellow;
+}
+
+
+.akce-text,
+.kontakty-text {
+    display: flex;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    color: yellow;
+}
+
+.akce-text span {
+    transform: translateX(-25%);
+}
+
+.kontakty-text span {
+    transform: translateX(-10%);
+}
+
+.kontakty-info {
+    margin-left: 200px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 35px;
+    color: yellow;
+}
+
+
+.photos-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.group-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.group-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: yellow;
+    text-align: center;
+    transform: translateX(-2%);
+}
+
+
+.group-container .photos img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 20px;
 }

@@ -21,6 +21,11 @@
         padding-bottom: 5px;
     }
 
+    .kontakty-info {
+        margin: 0;
+        font-size: 25px;
+        text-align: center;
+    }
 
 }
 
@@ -33,6 +38,12 @@
         display: block;
     }
 
-    
+    .kontakty-text, .akce-text {
+        margin-top: 50px;
+    }
+
+    .kontakty-text span, .akce-text span {
+        transform: translateX(0);
+    }
 }
 

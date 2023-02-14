@@ -10,13 +10,45 @@
 
 <body>
     {% for i in photos.keys() %}
-        <h1>{{ i }}</h1>
+    <h1>{{ i }}</h1>
+    <form method="post" action="/admin/del-group">
+        <button type="submit" value="{{ i }}" name="del-group">Delete</button>
+    </form>
+    <form method="post" action="/admin/add-photo" enctype="multipart/form-data">
+        <input type="file" name="photo" value="{{ i }}" accept="image/*"> <input type="submit">
+    </form>
+    <form method="post" action="/admin/del-photo">
         {% for j in photos[i] %}
-        <img src="/static/img/groups/{{ i }}/{{ j }}">
+        <button class="{{ j }}" onclick="submit_photo('{{ j }}')" type="button"><img
+                src="/static/img/groups/{{ i }}/{{ j }}"></button>
+        <input type="submit" id="{{ j }}" value="{{ i }}/{{ j }}" name="del-photo" hidden>
         {% endfor %}
+    </form>
     {% endfor %}
 
 
+    <br><br><br><br><br>
+    <form method="post" action="/admin/create-group">
+        <label>Create Group</label>
+        <br>
+        <input name="group-name">
+        <br>
+        <input type="submit">
+    </form>
+
+
+
+    <script>
+        function submit_photo(j) {
+            let btn = document.getElementsByClassName(j)[0]
+            let p = prompt("Submit?", "Yes")
+            if (p != null) {
+                console.log('qwe')
+                let inp = document.getElementById(j)
+                inp.click()
+            }
+        }
+    </script>
 </body>
 
 </html>

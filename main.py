@@ -5,6 +5,7 @@ import json
 import random
 import string
 import os
+import shutil
 
 app = Flask(__name__)
 
@@ -58,6 +59,7 @@ def fotky():
 
     return render_template("fotky.html", photos=photos)
 
+
 @app.route("/admin")
 def admin():
     if admin_check():
@@ -86,6 +88,8 @@ def admin_login():
 
         return resp
 
+    return redirect('admin')
+
 
 @app.route("/admin-panel")
 def admin_panel():
@@ -104,12 +108,48 @@ def admin_fotky():
 
             for i in groups:
                 photos[i] = os.listdir(f'./static/img/groups/{i}')
-            
+
             return render_template("admin_fotky.html", photos=photos)
-        
-        if method.form['do'] == 'del-group': pass
 
     return redirect("admin-login")
+
+
+@app.route("/admin/del-group", methods=['GET', 'POST'])
+def del_group():
+    if admin_check() and request.method == 'POST':
+        group = request.form["del-group"]
+        shutil.rmtree(f'./static/img/groups/{group}')
+        return redirect("/admin-panel/fotky")
+    return redirect('/admin')
+
+
+@app.route("/admin/create-group", methods=['GET', 'POST'])
+def create_group():
+    if admin_check() and request.method == 'POST':
+        group = request.form['group-name']
+        os.mkdir(f'./static/img/groups/{group}')
+        return redirect("/admin-panel/fotky")
+    return redirect('/admin')
+
+
+@app.route("/admin/del-photo", methods=['GET', 'POST'])
+def del_photo():
+    if admin_check() and request.method == 'POST':
+        photo = request.form['del-photo']
+        os.remove(f'./static/img/groups/{photo}')
+        return redirect('/admin-panel/fotky')
+    return redirect('/admin')
+
+
+@app.route("/admin/add-photo", methods=["GET", 'POST'])
+def add_photo():
+    if admin_check() and request.method == 'POST':
+        photo = request.files['photo']
+        group = request.form['photo']
+        photo.save(f'./static/img/groups/{group}/{photo.filename}')
+
+        return redirect('/admin-panel/fotky')
+    return redirect('admin')
 
 
 if __name__ == "__main__":

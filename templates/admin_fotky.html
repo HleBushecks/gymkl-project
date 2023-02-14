@@ -15,11 +15,12 @@
         <button type="submit" value="{{ i }}" name="del-group">Delete</button>
     </form>
     <form method="post" action="/admin/add-photo" enctype="multipart/form-data">
-        <input type="file" name="photo" value="{{ i }}" accept="image/*"> <input type="submit">
+        <input name="group" value="{{ i }}" hidden>
+        <input type="file" name="photo" accept="image/*"> <input type="submit">
     </form>
     <form method="post" action="/admin/del-photo">
         {% for j in photos[i] %}
-        <button class="{{ j }}" onclick="submit_photo('{{ j }}')" type="button"><img
+        <button class="{{ j }}" onclick="submit_photo('{{ j }}')" type="button"><img style="max-width: 200px;"
                 src="/static/img/groups/{{ i }}/{{ j }}"></button>
         <input type="submit" id="{{ j }}" value="{{ i }}/{{ j }}" name="del-photo" hidden>
         {% endfor %}

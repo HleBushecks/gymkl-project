@@ -119,6 +119,8 @@ def del_group():
     if admin_check() and request.method == 'POST':
         group = request.form["del-group"]
         shutil.rmtree(f'./static/img/groups/{group}')
+        CONFIG['groups'][group] = -1
+        config_dump()
         return redirect("/admin-panel/fotky")
     return redirect('/admin')
 
@@ -128,6 +130,8 @@ def create_group():
     if admin_check() and request.method == 'POST':
         group = request.form['group-name']
         os.mkdir(f'./static/img/groups/{group}')
+        CONFIG['groups'][group] = -1
+        config_dump()
         return redirect("/admin-panel/fotky")
     return redirect('/admin')
 
@@ -145,12 +149,17 @@ def del_photo():
 def add_photo():
     if admin_check() and request.method == 'POST':
         photo = request.files['photo']
-        group = request.form['photo']
-        photo.save(f'./static/img/groups/{group}/{photo.filename}')
+        group = request.form['group']
+        photo.save(
+            f'./static/img/groups/{group}/{CONFIG["groups"][group]+1}.{photo.filename.split(".")[-1]}')
+        CONFIG['groups'][group] = CONFIG['groups'][group]+1
+        config_dump()
 
         return redirect('/admin-panel/fotky')
     return redirect('admin')
 
 
 if __name__ == "__main__":
+    if 'groups' not in os.listdir('./static/img'):
+        os.mkdir("./static/img/groups")
     app.run(debug=True)

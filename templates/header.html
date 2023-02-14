@@ -1,0 +1,21 @@
+<header class="big-width">
+    <a href="/akce" class="nav-menu">AKCE</a>
+    <a href="/fotky" class="nav-menu">FOTKY</a>
+    <a href="/" class="nav-menu"><img class="logo-menu" src="{{ url_for('static', filename='img/tom.png') }}"></a>
+    <a href="/kniha" class="nav-menu">KNIHA</a>
+    <a href="/kontakty" class="nav-menu">KONTAKTY</a>
+</header>
+
+<header class="small-width">
+    <label class="burger-btn" for="burger-toggle">
+        <span>MENU</span>
+    </label>
+    <input id="burger-toggle" type="checkbox" />
+    <nav class="small-width-menu">
+        <a href="/" class="nav-menu"><img class="logo-menu" src="{{ url_for('static', filename='img/tom.png') }}"></a>
+        <a href="/akce" class="nav-menu">AKCE</a>
+        <a href="/fotky" class="nav-menu">FOTKY</a>
+        <a href="/kniha" class="nav-menu">KNIHA</a>
+        <a href="/kontakty" class="nav-menu">KONTAKTY</a>
+    </nav>
+</header>
